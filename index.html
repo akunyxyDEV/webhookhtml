@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="webhhook" id="webhook" cols="30" rows="10">webhook here.</textarea>
+    <textarea name="content" id="content" cols="30" rows="10">message here.</textarea>
+    <button onclick="sendMSG(document.getElementById('content').value,document.getElementById('webhook').value)"></button>
+    <script>
+        function sendMSG(msg,user,webhook) {
+            var key = webhook
+            var req = new XMLHttpRequest
+            req.open("POST",key)
+            req.setRequestHeader("Content-type","application/json")
+            var data = {
+                username: user,
+                avatar_url: "",
+                content: msg,
+            }
+            req.send(JSON.stringify(data))
+        }
+    </script>
+</body>
+</html>
